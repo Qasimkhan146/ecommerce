@@ -68,7 +68,8 @@ export default async function Page() {
   ]
 
   const todaysDeals = await getProductsByTag({ tag: 'todays-deal' })
-  console.log('whats comming in the products', todaysDeals)
+  const bestSellingProducts = await getProductsByTag({ tag: 'best-seller' })
+
   return (
     <>
       <HomeCarousel items={data.carousels} />
@@ -78,6 +79,16 @@ export default async function Page() {
         <Card className='w-full rounded-none'>
           <CardContent className='p-4 items-center gap-3'>
             <ProductSlider title={"Today's Deals"} products={todaysDeals} />
+          </CardContent>
+        </Card>
+
+        <Card className='w-full rounded-none'>
+          <CardContent className='p-4 items-center gap-3'>
+            <ProductSlider
+              title={'Best Selling Products'}
+              products={bestSellingProducts}
+              hideDetails
+            />
           </CardContent>
         </Card>
       </div>
