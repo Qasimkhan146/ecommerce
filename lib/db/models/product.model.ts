@@ -1,9 +1,9 @@
+import { Document, Model, model, models, Schema } from 'mongoose'
 import { IProductInput } from '@/types'
-import { Document, model, Model, models, Schema } from 'mongoose'
 
 export interface IProduct extends Document, IProductInput {
   _id: string
-  createAt: Date
+  createdAt: Date
   updatedAt: Date
 }
 
@@ -15,7 +15,7 @@ const productSchema = new Schema<IProduct>(
     },
     slug: {
       type: String,
-      reqiured: true,
+      required: true,
       unique: true,
     },
     category: {
